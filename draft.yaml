@@ -1,0 +1,44 @@
+models:
+  Lead:
+    first_name: string
+    last_name: string
+    email: string
+    phone: string
+    description: string
+
+  Instructor: 
+    first_name: string
+    last_name: string
+    email: string
+    phone: string
+    relationships: 
+      belongsToMany: Classroom, Program
+
+  Member:
+    first_name: string
+    last_name: string
+    email: string
+    address: string
+    phone: string
+    registration_date: datetime
+    program_id: unsignedInteger nullable
+    relationships: 
+      belongsToMany: Classroom, Program
+
+  Program: 
+    name: string
+    price: decimal:8,2
+    description: string
+    relationships:
+      hasMany: Member, Instructor, Classroom
+
+  Classroom: 
+    name: string
+    description: string
+    start_date: datetime
+    end_date: datetime
+    relationships:
+      belongsTo: Program
+      hasMany: Member, Coach
+
+

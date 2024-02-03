@@ -1,0 +1,27 @@
+created:
+    - database/factories/LeadFactory.php
+    - database/factories/InstructorFactory.php
+    - database/factories/MemberFactory.php
+    - database/factories/ProgramFactory.php
+    - database/factories/ClassroomFactory.php
+    - database/migrations/2024_02_03_192307_create_leads_table.php
+    - database/migrations/2024_02_03_192308_create_instructors_table.php
+    - database/migrations/2024_02_03_192309_create_members_table.php
+    - database/migrations/2024_02_03_192310_create_programs_table.php
+    - database/migrations/2024_02_03_192311_create_classrooms_table.php
+    - database/migrations/2024_02_03_192312_create_classroom_instructor_table.php
+    - database/migrations/2024_02_03_192313_create_instructor_program_table.php
+    - database/migrations/2024_02_03_192314_create_classroom_member_table.php
+    - database/migrations/2024_02_03_192315_create_member_program_table.php
+    - app/Models/Lead.php
+    - app/Models/Instructor.php
+    - app/Models/Member.php
+    - app/Models/Program.php
+    - app/Models/Classroom.php
+models:
+    User: { name: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string:100 nullable' }
+    Lead: { first_name: string, last_name: string, email: string, phone: string, description: string }
+    Instructor: { first_name: string, last_name: string, email: string, phone: string, relationships: { belongsToMany: 'Classroom, Program' } }
+    Member: { first_name: string, last_name: string, email: string, address: string, phone: string, registration_date: datetime, program_id: 'unsignedInteger nullable', relationships: { belongsToMany: 'Classroom, Program' } }
+    Program: { name: string, price: 'decimal:8,2', description: string, relationships: { hasMany: 'Member, Instructor, Classroom' } }
+    Classroom: { name: string, description: string, start_date: datetime, end_date: datetime, relationships: { belongsTo: Program, hasMany: 'Member, Coach' } }
