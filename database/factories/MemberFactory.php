@@ -5,7 +5,6 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use App\Models\Member;
-use App\Models\Program;
 
 class MemberFactory extends Factory
 {
@@ -28,7 +27,7 @@ class MemberFactory extends Factory
             'address' => $this->faker->word(),
             'phone' => $this->faker->phoneNumber(),
             'registration_date' => $this->faker->dateTime(),
-            'program_id' => Program::factory(),
+            'program_id' => $this->faker->randomNumber(),
         ];
     }
 }

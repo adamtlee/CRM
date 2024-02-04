@@ -21,9 +21,9 @@ models:
     address: string
     phone: string
     registration_date: datetime
+    program_id: unsignedInteger nullable
     relationships: 
-      belongsToMany: Classroom
-      belongsTo: Program
+      belongsToMany: Classroom, Program
 
   Program: 
     name: string

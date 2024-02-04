@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('phone');
             $table->dateTime('registration_date');
-            $table->foreignId('program_id');
+            $table->unsignedInteger('program_id')->nullable();
             $table->timestamps();
         });
     }
