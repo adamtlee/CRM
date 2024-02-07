@@ -4,15 +4,14 @@ created:
     - database/factories/MemberFactory.php
     - database/factories/ProgramFactory.php
     - database/factories/ClassroomFactory.php
-    - database/migrations/2024_02_04_232059_create_leads_table.php
-    - database/migrations/2024_02_04_232100_create_instructors_table.php
-    - database/migrations/2024_02_04_232101_create_members_table.php
-    - database/migrations/2024_02_04_232102_create_programs_table.php
-    - database/migrations/2024_02_04_232103_create_classrooms_table.php
-    - database/migrations/2024_02_04_232104_create_classroom_instructor_table.php
-    - database/migrations/2024_02_04_232105_create_instructor_program_table.php
-    - database/migrations/2024_02_04_232106_create_classroom_member_table.php
-    - database/migrations/2024_02_04_232107_create_member_program_table.php
+    - database/migrations/2024_02_07_015035_create_leads_table.php
+    - database/migrations/2024_02_07_015036_create_instructors_table.php
+    - database/migrations/2024_02_07_015037_create_members_table.php
+    - database/migrations/2024_02_07_015038_create_programs_table.php
+    - database/migrations/2024_02_07_015039_create_classrooms_table.php
+    - database/migrations/2024_02_07_015040_create_classroom_instructor_table.php
+    - database/migrations/2024_02_07_015041_create_instructor_program_table.php
+    - database/migrations/2024_02_07_015042_create_classroom_member_table.php
     - app/Models/Lead.php
     - app/Models/Instructor.php
     - app/Models/Member.php
@@ -22,6 +21,6 @@ models:
     User: { name: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string:100 nullable' }
     Lead: { first_name: string, last_name: string, email: string, phone: string, description: string }
     Instructor: { first_name: string, last_name: string, email: string, phone: string, relationships: { belongsToMany: 'Classroom, Program' } }
-    Member: { first_name: string, last_name: string, email: string, address: string, phone: string, registration_date: datetime, program_id: 'unsignedInteger nullable', relationships: { belongsToMany: 'Classroom, Program' } }
+    Member: { first_name: string, last_name: string, email: string, address: string, phone: string, registration_date: datetime, relationships: { belongsTo: Program, belongsToMany: Classroom } }
     Program: { name: string, price: 'decimal:8,2', description: string, relationships: { hasMany: 'Member, Instructor, Classroom' } }
     Classroom: { name: string, description: string, start_date: datetime, end_date: datetime, relationships: { belongsTo: Program, hasMany: 'Member, Coach' } }

@@ -42,8 +42,8 @@ class MemberResource extends Resource
                     ->maxLength(255),
                 Forms\Components\DateTimePicker::make('registration_date')
                     ->required(),
-                Forms\Components\TextInput::make('program_id')
-                    ->numeric(),
+                Forms\Components\Select::make('program_id')
+                    ->relationship('program', 'name'),
             ]);
     }
 
@@ -64,7 +64,7 @@ class MemberResource extends Resource
                 Tables\Columns\TextColumn::make('registration_date')
                     ->dateTime()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('program_id')
+                Tables\Columns\TextColumn::make('program.name')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
